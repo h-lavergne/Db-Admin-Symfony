@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,6 +46,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $em->persist($food);
             $em->flush();
+            $this->addFlash("success", "You successfully edit ". $food->getName() );
             return $this->redirectToRoute("admin.food.index");
         }
 
@@ -68,6 +70,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $em->persist($form->getData());
             $em->flush();
+            $this->addFlash("success", "Successful create");
             return $this->redirectToRoute("admin.food.index");
         }
 
@@ -77,19 +80,19 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/delete-food/{id}", name="admin.food.delete", methods="SUP")
+     * @Route("/admin/delete-food/{id}", name="admin.food.delete", methods="delete")
      * @param Food $food
      * @param EntityManagerInterface $em
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function delete(Food $food, EntityManagerInterface $em, Request $request)
     {
-        if ($this->isCsrfTokenValid("SUP" . $food->getId(), $request->get("_token"))){
+        if ($this->isCsrfTokenValid("delete" . $food->getId(), $request->get("_token"))){
             $em->remove($food);
             $em->flush();
+            $this->addFlash("success", "Successful delete");
             return $this->redirectToRoute("admin.food.index");
         }
-
     }
 }

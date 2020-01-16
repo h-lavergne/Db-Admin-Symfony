@@ -6,6 +6,12 @@
 {% block h1 %} Administration {% endblock %}
 
 {% block body %}
+
+    {% for message in app.flashes("success") %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <a href="{{ path('admin.food.create') }}" class="btn btn-success rounded-pill">Create</a>
     <table class="table">
         <tr class="table-secondary">
@@ -30,8 +36,8 @@
                 <td>
                     <a href="{{ path("admin.food.edit", {"id": food.id}) }}" class="btn btn-primary rounded-pill">Edit</a>
                     <form method="post" action="{{ path("admin.food.delete", {"id": food.id}) }}" class="d-inline-block">
-                        <input type="hidden" name="_method" value="SUP">
-                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ food.id) }}">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ food.id) }}">
                         <input type="submit" class="btn btn-danger rounded-pill" value="Delete">
                     </form>
                 </td>
