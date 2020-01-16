@@ -18,7 +18,43 @@ class FoodController extends AbstractController
     {
         $foods = $repository->findAll();
         return $this->render('food/index.html.twig', [
-            "foods" => $foods
+            "food" => $foods,
+            "isCalorie" => false,
+            "isCarbohydrate" => false
         ]);
     }
+
+    /**
+     * @Route("/food/less-calorie/{calorie}", name="food.per.calorie")
+     * @param FoodRepository $repository
+     * @param $calorie
+     * @return Response
+     */
+    public function FoodsLessCaloric(FoodRepository $repository, $calorie)
+    {
+        $foods = $repository->getFoodByProperty("calorie", "<", $calorie);
+        return $this->render('food/index.html.twig', [
+            "food" => $foods,
+            "isCalorie" => true,
+            "isCarbohydrate" => false
+        ]);
+    }
+
+    /**
+     * @Route("/food/less-carbohydrate/{carbohydrate}", name="food.per.carbohydrate")
+     * @param FoodRepository $repository
+     * @param $carbohydrate
+     * @return Response
+     */
+    public function getFoodWithLessCarbohydrate(FoodRepository $repository, $carbohydrate)
+    {
+        $foods = $repository->getFoodByProperty("carbohydrate", "<", $carbohydrate);
+        return $this->render('food/index.html.twig', [
+            "food" => $foods,
+            "isCalorie" => false,
+            "isCarbohydrate" => true
+        ]);
+    }
+
+
 }

@@ -1,5 +1,11 @@
-.perso_imgFood{
+.perso_imgFood {
     width: 150px;
     height: 120px;
+    object-fit: cover;
+}
+
+.perso_imgFoodAdmin {
+    width: 70px;
+    height: 60px;
     object-fit: cover;
 }

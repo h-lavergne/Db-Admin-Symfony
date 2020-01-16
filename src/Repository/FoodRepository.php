@@ -19,6 +19,15 @@ class FoodRepository extends ServiceEntityRepository
         parent::__construct($registry, Food::class);
     }
 
+    public function getFoodByProperty($property, $sign, $element){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.'.$property. ' ' .$sign.' :val')
+            ->setParameter('val', $element)
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return Food[] Returns an array of Food objects
     //  */

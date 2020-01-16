@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration editing!{% endblock %}
+
+
+{% block h1 %} Administration Editing: {{ food.name }}{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-6">
+            <img src="{{ asset("images/" ~ food.image) }}" style="width: 25%" alt="">
+            <div>{{ form_row(form.image) }}</div>
+            <div>{{ form_row(form.name, {"attr": {"class": ""}, "label": "Food's name"}) }}</div>
+            <input type="submit" class="btn btn-primary rounded-pill" value="Edit">
+        </div>
+        <div class="col">
+            {{ form_widget(form) }}
+
+        </div>
+
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
