@@ -1,28 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FoodController!{% endblock %}
+{% block title %}Hello TypeController!{% endblock %}
 
-
-{% block h1 %} Liste de tous les aliments
-    {% if isCalorie %}
-        avec moins de 50 calories
-    {% elseif isCarbohydrate %}
-        avec moins de 5g de glucides
-    {% endif %}
-{% endblock %}
-
+{% block h1 %} Liste des aliments appartenant aux {{ type.wording }}{% endblock %}
 {% block body %}
-    <div class="mb-2">
-        <a class="btn btn-primary text-white bg-primary rounded mr-2"
-           href="{{ path("food.index") }}">Tous</a>
-        <a class="btn btn-primary text-white bg-primary rounded mr-2"
-           href="{{ path("food.per.calorie", {"calorie": 50}) }}">Foods with less than 50 calories</a>
-        <a class="btn btn-primary text-white bg-primary rounded "
-           href="{{ path("food.per.carbohydrate", {"carbohydrate": 5}) }}">Foods with less than 5g of carbohydrate</a>
-    </div>
-
-    <div class="row">
-        {% for food in foods %}
+    <div class="row align-items-center">
+        {% for food in type.foods %}
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="card border-secondary mb-3 mx-auto" style="max-width: 20rem">
                     <div class="card-header text-center">
@@ -62,4 +45,5 @@
             </div>
         {% endfor %}
     </div>
+
 {% endblock %}

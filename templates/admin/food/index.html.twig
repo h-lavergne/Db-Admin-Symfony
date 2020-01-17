@@ -17,6 +17,7 @@
         <tr class="table-secondary">
             <td>Image</td>
             <td>Food</td>
+            <td>Type</td>
             <td>Price</td>
             <td>Calories</td>
             <td>Proteins</td>
@@ -28,6 +29,7 @@
             <tr>
                 <td style="width: 10%"><img src="{{ asset("images/foods/" ~ food.image) }}" class="perso_imgFoodAdmin" alt=""></td>
                 <td class="font-weight-bold">{{ food.name }}</td>
+                <td>{{ food.type.wording }}</td>
                 <td>{{ food.price }}</td>
                 <td>{{ food.calorie }}</td>
                 <td>{{ food.protein }}</td>

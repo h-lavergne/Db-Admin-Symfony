@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration!{% endblock %}
+
+
+{% block h1 %} Administration {% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes("success") %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <a href="{{ path("admin.type.create") }}" class="btn btn-success rounded-pill">Create</a>
+    <table class="table">
+        <tr class="table-secondary">
+            <td>Image</td>
+            <td>Type</td>
+            <td>Actions</td>
+        </tr>
+        {% for type in types %}
+            <tr>
+                <td style="width: 10%">
+                    <img src="{{ asset("images/types/" ~ type.image) }}" class="perso_imgFoodAdmin" alt="">
+                </td>
+                <td class="font-weight-bold">{{ type.wording }}</td>
+                <td>
+                    <a href="{{ path("admin.type.edit", {"id": type.id}) }}" class="btn btn-primary rounded-pill">Edit</a>
+                    <form method="post" action="{{ path("admin.type.delete", {"id": type.id}) }}" class="d-inline-block">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ type.id) }}">
+                        <input type="submit" class="btn btn-danger rounded-pill" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -16,6 +16,19 @@
                     <a class="dropdown-item" href="{{ path("admin.food.index") }}">Administration</a>
                 </div>
             </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Catégories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path("type.index") }}">Catégories</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path("admin.type.index") }}">Administration</a>
+                </div>
+            </li>
+
+
         </ul>
     </div>
 </nav>

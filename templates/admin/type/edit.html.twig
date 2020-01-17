@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration editing!{% endblock %}
+
+
+{% block h1 %} Administration Editing: {{ type.wording }}{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <div>{{ form_row(form.imageFile) }}</div>
+    {{ form_widget(form) }}
+    <a href="{{ path("admin.type.index") }}" class="btn btn-danger">Back</a>
+    <input type="submit" class="btn btn-primary" value="Edit">
+    {{ form_end(form) }}
+
+{% endblock %}

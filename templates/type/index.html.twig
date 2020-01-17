@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TypeController!{% endblock %}
+
+{% block h1 %} Listes des catégories {% endblock %}
+{% block body %}
+    <div class="row align-items-center">
+
+        {% for type in types %}
+            <div class="col-8 col-md-6 col-lg-8 col-xl-3">
+                <div class="card border-secondary mb-3 mx-auto" style="max-width: 20rem">
+                    <div class="card-header text-center">
+                        <img src="{{ asset("images/types/" ~ type.image) }}" alt="{{ type.wording }}"
+                             class="perso_imgFood card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-center pb-2 mx-3 border-bottom border-secondary">
+                            <a href="{{ path("type.show", {"id": type.id}) }}" class="btn btn-warning rounded-pill">{{ type.wording }}</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
