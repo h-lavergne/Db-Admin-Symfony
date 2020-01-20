@@ -40,6 +40,11 @@ class User implements UserInterface
      */
     private $passwordConfirm;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,7 +102,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return [$this->role ];
     }
 
     /**
@@ -121,5 +126,21 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): self
+    {
+        if ($role === null){
+            $this->role = "ROLE_USER";
+        } else {
+            $this->role = $role;
+        }
+
+        return $this;
     }
 }

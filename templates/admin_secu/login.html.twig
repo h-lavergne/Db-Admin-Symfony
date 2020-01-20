@@ -6,6 +6,11 @@
 
 {% block body %}
     <div class="row align-items-center justify-content-center mt-5 ">
+        {% if error %}
+            <div class="alert alert-danger">
+                 {{ error.messageKey }}
+            </div>
+        {% endif %}
         <div class="col-10 col-md-8 col-lg-4 col-xs-10 bg-light p-3 m-2 shadow">
             <form action="{{ path("login") }}" method="post">
                 <div class="form-group">

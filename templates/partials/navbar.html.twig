@@ -14,8 +14,11 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path("food.index") }}">Food</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ path("admin.food.index") }}">Administration</a>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path("admin.food.index") }}">Administration</a>
+                    {% endif %}
+
                 </div>
             </li>
 
@@ -26,8 +29,10 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path("type.index") }}">Catégories</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ path("admin.type.index") }}">Administration</a>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path("admin.type.index") }}">Administration</a>
+                    {% endif %}
                 </div>
             </li>
 
