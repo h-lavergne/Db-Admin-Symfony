@@ -1,15 +1,15 @@
 <?php
-//
-//namespace App\DataFixtures;
-//
-//use App\Entity\Food;
-//use Doctrine\Bundle\FixturesBundle\Fixture;
-//use Doctrine\Common\Persistence\ObjectManager;
-//
-//class FoodFixtures extends Fixture
-//{
-//    public function load(ObjectManager $manager)
-//    {
+
+namespace App\DataFixtures;
+
+use App\Entity\Food;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\Persistence\ObjectManager;
+
+class FoodFixtures extends Fixture
+{
+    public function load(ObjectManager $manager)
+    {
 //        $carotte = new Food();
 //        $carotte->setName("Carotte")
 //            ->setPrice(1.80)
@@ -51,5 +51,5 @@
 //        $manager->persist($pomme);
 //
 //        $manager->flush();
-//    }
-//}
+    }
+}
