@@ -26,7 +26,7 @@ class AdminFoodController extends AbstractController
     public function index(FoodRepository $repository)
     {
         $foods = $repository->findAll();
-        return $this->render('admin/food/index.html.twig', [
+        return $this->render('admin/food/register.html.twig', [
             "foods" => $foods
         ]);
     }
